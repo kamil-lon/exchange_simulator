@@ -31,6 +31,38 @@ class User
 			echo $e->getMessage();
 		}
 	}
+	
+	
+	public function login($user_name, $user_email, $user_pass)
+	{
+		try
+		{
+			$stmt = $this->db->prepare("SELECT * FROM users WHERE user_name = :user_name OR user_email = :user_email");
+			$stmt->execute(array(':user_name'=>$user_name, ':user_email'=>$user_email));
+
+			if($stmt->rowCount()>0)
+			{
+				$result = $stmt->fetch(PDO::FETCH_ASSOC);
+				if(password_verify($user_pass,$result['user_pass']))
+				{
+					$_SESSION['logged'] = $result['user_name'];
+					return true;
+				}
+				else
+					return false;
+			}
+			else
+			{
+				$_SESSION['none'] = true;
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+	}
+	
 }
 
 ?>

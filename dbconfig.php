@@ -16,6 +16,6 @@ catch(PDOException $e)
 	echo $e->getMessage();
 }
 
-include 'class.user.php';
+include 'user.php';
 $user = new User($db_con);
 ?>
