@@ -1,37 +1,196 @@
 body
 {
  /*This pattern is downloaded from www.subtlepatterns.com If you need more, that's where to get'em.*/
-	background-image: url("symphony.png");
+	background-image: url("footer_lodyas.png");
+	margin: 0%;
+}
+
+.upper_header
+{
+	background-color: #1558c4;
+	height: 30px;
+	color: whitesmoke;
+	padding-left: 40px;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 13px;
+	line-height: 30px;
+}
+
+.lower_header
+{
+	background-color: #f7f7f7;
+	height: 60px;
+}
+
+.logo
+{
+	width: 300px;
+	text-align: left;
+	margin-left: 30px;
+	float: left;
+}
+
+.logo2
+{
+	width: 250px;
+	height: 60px;
+}
+
+.menu
+{
+	float: left;
+	width: 900px;
+	height: 50px;
+	margin-top: 5px;
+}
+
+.option
+{
+	float: left;
+	width: 222px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 30px;
+	border-left: 2px solid #5b5859;
+}
+
+.option:hover
+{
+	background-color: #d3cdcd;
+	color: #071935;
+	cursor: pointer;
+}
+
+.container
+{
+	width: 90%;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.baner
+{
+	text-align: center;
+}
+
+.baner1
+{
+	width: 100%;
+	height: 250px;
+	opacity: 0.7;
+}
+
+.baner1:hover
+{
+	opacity: 1.0;
 }
 
 .main
 {
-	width: 340px;
-	height: 440px;
-	border: 2px solid blue;
+	width: 100%;
+	min-height: 650px;
+	background-color: #f7faff;
+	margin-top: 15px;
+}
+
+.welcome
+{
+	font-size: 65px;
+	text-align: center;
+	height: 80px;
+	margin-top: 15px;
+	line-height: 100px;
+	font-family: 'Vollkorn', serif;
+	color: #13075e;
+}
+
+.welcome2
+{
+	text-align: center;
+	height: 25px;
+	color: #232efc;
+	font-size: 25px;
+}
+
+.register
+{
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
-	padding: 30px;
-	text-align: left;
-	font-size: 26px;
-	border-radius: 4px;
+	margin-top: 40px;
+	height: 120px;
+	width: 400px;
+	text-align: center;
+	line-height: 120px;
+	font-size: 69px;
+	border: 4px solid blue;
+	border-radius: 13px;
+	color: #232efc;
 }
 
-.place
+.register:hover
 {
-	width: 220px;
-	height: 40px;
-	border-radius: 3px;
-	border: 2px solid lightblue;
+	cursor: pointer;
+	background-color: #c5c8f9;
 }
 
-.submit1
+.about
 {
-	width: 102px;
+	margin-top: 80px;
+	height: 300px;
+	width: 1050px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-a
+.about_cell
 {
-	text-decoration: none;
+	width: 348px;
+	height: 300px;
+	float: left;
 }
+
+#about_cell_medium
+{
+	border-left: 3px solid gray;
+	border-right: 3px solid gray;
+}
+
+.about_header
+{
+	font-size: 35px;
+	text-align: center;
+}
+
+.about_logo
+{
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.about_text
+{
+	font-size: 20px;
+	text-align: center;
+}
+
+.footer
+{
+	height: 20px;
+	background-color: black;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
