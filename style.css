@@ -1,8 +1,35 @@
 body
 {
- /*This pattern is downloaded from www.subtlepatterns.com If you need more, that's where to get'em.*/
-	background-image: url("footer_lodyas.png");
 	margin: 0%;
+	
+background: linear-gradient(349deg, #c9ffb0, #d7b5ff, #fbd252);
+background-size: 600% 600%;
+
+-webkit-animation: AnimationName 18s ease infinite;
+-moz-animation: AnimationName 18s ease infinite;
+-o-animation: AnimationName 18s ease infinite;
+animation: AnimationName 18s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
 }
 
 .upper_header
@@ -47,18 +74,24 @@ body
 .option
 {
 	float: left;
-	width: 222px;
+	width: 197px;
 	text-align: center;
 	line-height: 50px;
-	font-size: 30px;
-	border-left: 2px solid #5b5859;
+	font-size: 28px;
+	padding-left: 15px;
+	margin-left: 10px;
+	background-color: #d3cdcd;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 23% 100%);
+clip-path: polygon(0 0, 100% 0, 100% 100%, 23% 100%);
 }
 
 .option:hover
 {
-	background-color: #d3cdcd;
 	color: #071935;
 	cursor: pointer;
+	background: linear-gradient(276deg, #baff30, #af6aff, #ff6b34, #ff34b0);
+	background-size: 300% 300%;
+	color:white;
 }
 
 .container
@@ -184,11 +217,171 @@ body
 	text-align: center;
 }
 
+/*----------------------------------------------------*/
 
+.logout
+{
+	color: white;
+}
 
+.index_main
+{
+	width: 1250px;
+	min-height: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
 
+.waluty
+{
+	background-image: url("images/confectionary.png");
+	width: 300px;
+	min-height: 1000px;
+	float: left;
+	margin-right: 15px;
+}
 
+.kursy
+{
+	width: 614px;
+	min-height: 1000px;
+	float: left;
+	background-image: url("images/confectionary.png");
+	-webkit-clip-path: polygon(6% 0, 100% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 5%);
+clip-path: polygon(6% 0, 100% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 5%);
+}
 
+.news
+{
+	background-image: url("images/confectionary.png");
+	width: 300px;
+	min-height: 1000px;
+	float: left;
+	margin-left: 15px;
+}
+
+.one_news
+{
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	text-align: left;
+	font-family: "Times New Roman",Serif;
+	border-bottom: 1px solid black;
+}
+
+.one_news_a
+{
+	text-decoration: none;
+	font-size: 17px;
+	font-weight: bold;
+	color: #303093;
+}
+
+.headers_index
+{
+	text-align: center;
+	font-size: 30px;
+	color: #070647;
+	margin-top: 10px;	
+	border-bottom: 1.5px solid #303093;
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.stack_table
+{
+	margin-left: 20px;
+	width: 280px;
+	font-size: 20px;
+	margin-top: 25px;
+	font-family: 'Lora', serif;
+}
+
+.stack_table_row
+{
+	text-align: center;
+	height: 35px;
+}
+
+.stack_table_td
+{
+	font-weight: bold;
+	border-bottom: 2px solid #303093;
+}
+
+.sell
+{
+	width: 52px;
+	height: 24px;
+	background-color: #fc717a;
+	font-size: 14px;
+	border: none;
+	padding: 3px;
+	-webkit-clip-path: polygon(21% 0, 100% 0, 100% 20%, 100% 100%, 100% 93%, 0 93%, 0 84%, 0 21%);
+clip-path: polygon(21% 0, 100% 0, 100% 20%, 100% 100%, 100% 93%, 0 93%, 0 84%, 0 21%);
+}
+
+.sell:hover
+{
+	cursor: pointer;
+	background-color: #f93b48;
+}
+
+.rates_table
+{
+	margin-left: 50px;
+	font-size: 18px;
+	width: 500px;
+	text-transform: capitalize;
+	margin-right: auto;
+}
+
+.rates_table tr:hover
+{
+	background-color: rgba(106, 232, 64, 0.36)
+}
+
+.rates_table_td_rate
+{
+	font-size: 21px;
+	border-bottom: 1px solid #303093;
+	text-align: center;
+}
+
+.rates_table_td_name
+{
+	font-family: 'Lora', serif;
+}
+
+.buy
+{
+	width: 52px;
+	height: 24px;
+	background-color: #2ef47a;
+	font-size: 14px;
+	padding: 3px;
+	text-align: center;
+	margin-left: 35px;
+	-webkit-clip-path: polygon(21% 0, 100% 0, 100% 20%, 100% 100%, 100% 93%, 0 93%, 0 84%, 0 21%);
+clip-path: polygon(21% 0, 100% 0, 100% 20%, 100% 100%, 100% 93%, 0 93%, 0 84%, 0 21%);
+	border: none;
+}
+
+.buy:hover
+{
+	cursor: pointer;
+	background-color: #04d353;
+}
+
+.count
+{
+	width: 50px;
+	margin-left: 15px;
+}
 
 
 

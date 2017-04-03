@@ -17,5 +17,7 @@ catch(PDOException $e)
 }
 
 include 'user.php';
+include 'currency.php';
 $user = new User($db_con);
+$currency = new Currency($db_con);
 ?>

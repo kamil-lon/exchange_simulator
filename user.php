@@ -46,6 +46,7 @@ class User
 				if(password_verify($user_pass,$result['user_pass']))
 				{
 					$_SESSION['logged'] = $result['user_name'];
+					$_SESSION['user_id'] = $result['user_id'];
 					return true;
 				}
 				else
