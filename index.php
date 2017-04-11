@@ -9,21 +9,40 @@ $stmt->execute();
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //---------------------------------
-
-$xml = simplexml_load_file('http://www.nbp.pl/kursy/xml/LastA.xml');
-$news = simplexml_load_file('http://feeds.bbci.co.uk/news/business/rss.xml');
-
-for($i=0; $i<34; $i++)
+$lastDate = date("Y-m-d",strtotime("-1 days"));
+$url = 'http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml';
+if(!is_null($url))
 {
-		$rate = $xml->pozycja[$i]->kurs_sredni;
-		$name = $xml->pozycja[$i]->kod_waluty;	
-				$_SESSION['rate_'.$name] = $rate;
+	$lastCurrency = simplexml_load_file($url);
+}
+else
+{
+	$lastDate = date("Y-m-d",strtotime("-2 days"));
+	if(file_exists('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml'))
+		$lastCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml');
+	else
+	{
+		$lastDate = date("Y-m-d",strtotime("-3 days"));
+		$lastCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml');
+	}
 }
 
+$actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a?format=xml');
+$news = simplexml_load_file('http://feeds.bbci.co.uk/news/business/rss.xml');
+
+//session variables named as currency necessary to make sell
+for($i=0; $i<34; $i++)
+{
+		$rate = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Mid;
+		$code = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Code;	
+		$_SESSION['rate_'.$code] = $rate;
+}
+
+//-----------------------------------
 
 function stack_table($value,$value_name)
 {
-	if($value>0)
+	if($value!=0)
 	{
 		echo '<tr class="stack_table_row" ><form action="works.php" method="POST" >';
 		echo '<td class="stack_table_td" >'.$value_name.'</td>';
@@ -68,30 +87,58 @@ function stack_table($value,$value_name)
 	</div>
 	<div class="index_main">
 		<div class="waluty">
-				<div class="headers_index">YOUR STACK</div>
+				<div class="headers_index">YOUR STACK
+			<?php if(isset($_SESSION['sell_error'])) { 
+								echo $_SESSION['sell_error']; unset($_SESSION['sell_error']); } ?>
+			</div>
 				<table class="stack_table">
 					<?php 
 					stack_table($results['PLN'],'PLN');
 					for($i=0; $i<34; $i++)
 						{
-							$name = $xml->pozycja[$i]->kod_waluty;
-							stack_table($results[''.$name],$name);
+							$code = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Code;	
+							stack_table($results[''.$code],$code);	
 						}
 					?>
 				</table>
 		</div>
 		<div class="kursy">
-			<div class="headers_index">RATES</div>
+			<div class="headers_index">RATES
+			<?php if(isset($_SESSION['buy_error'])) { 
+								echo $_SESSION['buy_error']; unset($_SESSION['buy_error']); } ?>
+			</div>
 			<table class="rates_table">
 					<?php
 						for($i=0; $i<35; $i++)
 						{
-							$rate = $xml->pozycja[$i]->kurs_sredni;
-							$name = $xml->pozycja[$i]->nazwa_waluty;
-							$code = $xml->pozycja[$i]->kod_waluty;
+							$rate = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Mid;
+							$name = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Currency;	
+							$code = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Code;	
+							$rate = round((float)str_replace(",",".",$rate),4);
+							
+							
+							$rateYesterday = (string)$lastCurrency->ExchangeRatesTable->Rates->Rate[$i]->Mid;
+							$rateYesterday = round((float)str_replace(",",".",$rateYesterday),4);
+							$change = round(abs($rate-$rateYesterday),4);
+							
+							if($rate>$rateYesterday){
+								$style = 'color: green;';
+								$arrow = '<img src="images/arrow_up.png" height="10px" width="10px" alt=""/>';
+							}
+							else if($rate<$rateYesterday){
+								$style = 'color: red';
+								$arrow = '<img src="images/arrow_down.png" height="10px" width="10px" alt=""/>';
+							}
+							else{
+								$style='color: blue;';
+								$arrow='';
+							}
+							
 							echo '<tr><form action="works.php" method="POST">';
 							echo '<td class="rates_table_td_name">'.$name.'</td>';
 							echo '<td class="rates_table_td_rate" name="rate">'.$rate.'</td>';
+							echo '<td class="rates_table_td_arrow">'.$arrow.'</td>';
+							echo '<td class="rates_table_td_change" style="'.$style.'">'.$change.'</td>';
 							echo '<td><input type="submit" value="BUY" class="buy" name="bought"/></td>';
 							echo '<td><input type="text" class="count" name="count"/></td>';
 							echo '<input type="hidden" name="rate" value="'.$rate.'" />';

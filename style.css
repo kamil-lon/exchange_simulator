@@ -357,6 +357,16 @@ clip-path: polygon(21% 0, 100% 0, 100% 20%, 100% 100%, 100% 93%, 0 93%, 0 84%, 0
 	font-family: 'Lora', serif;
 }
 
+.rates_table_td_change{
+	font-size: 15px;
+	text-align: center;
+	width: 100px;
+}
+
+.rates_table_td_arrow{
+	padding-left: 15px;
+}
+
 .buy
 {
 	width: 52px;
