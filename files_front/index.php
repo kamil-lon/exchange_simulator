@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <?php
-include 'dbconfig.php';
+include 'files_database/dbconfig.php';
 $user = $_SESSION['logged'];
 $stmt = $db_con->prepare("SELECT * FROM currency WHERE user_id= :user_id");
 $stmt->bindParam(":user_id",$_SESSION['user_id']);
@@ -79,7 +79,7 @@ function stack_table($value,$value_name)
 		<div class="menu">
 			<div class="option">HOME</div>
 			<div class="option">NEWS</div>
-			<div class="option">EXCHANGE</div>
+			<div class="option">HISTORY</div>
 			<div class="option">CONTACT</div>
 			<div style="clear: both;"></div>
 		</div>

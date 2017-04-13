@@ -1,5 +1,5 @@
 <?php
-include 'dbconfig.php';
+include 'files_database/dbconfig.php';
 
 $user_id = $_SESSION['user_id'];
 $stmt = $db_con->prepare("SELECT * FROM currency WHERE user_id=$user_id");
@@ -41,5 +41,5 @@ if(isset($_POST['selled']))
 	}
 }
 	
-header("Location: index.php");
+header("Location: files_front/index.php");
 ?>

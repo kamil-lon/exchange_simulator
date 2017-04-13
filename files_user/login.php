@@ -2,11 +2,11 @@
 
 <?php
 
-require_once("dbconfig.php");
+include ("files_database/dbconfig.php");
 
 if(isset($_SESSION['logged']))
 {
-	header("Location: index.php");	
+	header("Location: files_front/index.php");	
 }
 
 if(isset($_POST['submited']))
@@ -17,7 +17,7 @@ if(isset($_POST['submited']))
 	
 	if($user->login($user_name,$user_email,$user_pass))
 	{
-		header("Location: index.php");
+		header("Location: files_front/index.php");
 	}
 	else
 	{

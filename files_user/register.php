@@ -1,5 +1,5 @@
 <?php
-require_once 'dbconfig.php';
+require_once 'files_database/dbconfig.php';
 
 if(isset($_POST['submited']))
 {
@@ -45,7 +45,7 @@ if(isset($_POST['submited']))
 			
     else
      if($user->register($user_name,$user_mail,$user_pass))
-						header('Location: index.html');
+						header('Location: files_front/index.html');
 		}
 		catch(PDOException $e)
 		{
