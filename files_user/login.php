@@ -2,11 +2,11 @@
 
 <?php
 
-include ("files_database/dbconfig.php");
+include ("../files_database/dbconfig.php");
 
 if(isset($_SESSION['logged']))
 {
-	header("Location: files_front/index.php");	
+	header("Location: ../files_front/index.php");	
 }
 
 if(isset($_POST['submited']))
@@ -17,7 +17,7 @@ if(isset($_POST['submited']))
 	
 	if($user->login($user_name,$user_email,$user_pass))
 	{
-		header("Location: files_front/index.php");
+		header("Location: ../files_front/index.php");
 	}
 	else
 	{
@@ -39,7 +39,7 @@ if(isset($_POST['submited']))
 		<title>Login Page</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="../files_front/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
 	</head>
@@ -58,7 +58,7 @@ if(isset($_POST['submited']))
 	</div>
 	<div class="lower_header">
 		<div class="logo">
-			<img src="images/logo.png" alt="logo" class="logo2"/>
+			<img src="../files_front/images/logo.png" alt="logo" class="logo2"/>
 		</div>
 		<div class="menu">
 			<div class="option">HOME</div>
@@ -71,7 +71,7 @@ if(isset($_POST['submited']))
 	</div>
 	<div class="container">
 		<div class="baner">
-			<img src="images/baner1.jpg" alt="baner1" class="baner1"/>
+			<img src="../files_front/images/baner1.jpg" alt="baner1" class="baner1"/>
 		</div>
 		<div class="main">
 			<div class="welcome">WELCOME!</div>
@@ -80,17 +80,17 @@ if(isset($_POST['submited']))
 			<div class="about">
 				<div class="about_cell">
 					<div class="about_header">Lorem ipsum</div>
-					<div class="about_logo"><img src="images/about2.png" alt="about2"/></div>
+					<div class="about_logo"><img src="../files_front/images/about2.png" alt="about2"/></div>
 					<div class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum orci sed cursus gravida. Maecenas sed diam in augue euismod tincidunt. Nunc eget justo ante. Aenean in ornare dolor.</div>
 				</div>
 				<div class="about_cell" id="about_cell_medium">
 					<div class="about_header">Lorem ipsum</div>
-					<div class="about_logo"><img src="images/about2.png" alt="about2"/></div>
+					<div class="about_logo"><img src="../files_front/images/about2.png" alt="about2"/></div>
 					<div class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum orci sed cursus gravida. Maecenas sed diam in augue euismod tincidunt. Nunc eget justo ante. Aenean in ornare dolor.</div>
 				</div>
 				<div class="about_cell">
 					<div class="about_header">Lorem ipsum</div>
-					<div class="about_logo"><img src="images/about2.png" alt="about2"/></div>
+					<div class="about_logo"><img src="../files_front/images/about2.png" alt="about2"/></div>
 					<div class="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum orci sed cursus gravida. Maecenas sed diam in augue euismod tincidunt. Nunc eget justo ante. Aenean in ornare dolor.</div>
 				</div>
 				<div style="clear: both;"></div>

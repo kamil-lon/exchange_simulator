@@ -1,12 +1,8 @@
 <!DOCTYPE HTML>
 
 <?php
-include 'files_database/dbconfig.php';
+include '../files_database/dbconfig.php';
 $user = $_SESSION['logged'];
-$stmt = $db_con->prepare("SELECT * FROM currency WHERE user_id= :user_id");
-$stmt->bindParam(":user_id",$_SESSION['user_id']);
-$stmt->execute();
-$results = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //---------------------------------
 $lastDate = date("Y-m-d",strtotime("-1 days"));
@@ -38,21 +34,6 @@ for($i=0; $i<34; $i++)
 		$_SESSION['rate_'.$code] = $rate;
 }
 
-//-----------------------------------
-
-function stack_table($value,$value_name)
-{
-	if($value!=0)
-	{
-		echo '<tr class="stack_table_row" ><form action="works.php" method="POST" >';
-		echo '<td class="stack_table_td" >'.$value_name.'</td>';
-		echo '<td>'.$value.'</td>';
-		echo '<td><input type="submit" class="sell" name="selled" value="SELL"/></td>';
-		echo '<td><input type="text" class="count" name="count"/></td>';
-		echo '<input type="hidden" name="name" value="'.$value_name.'"/>';
-		echo '</tr></form>';
-	}
-}
 ?>
 
 <html>
@@ -70,8 +51,8 @@ function stack_table($value,$value_name)
 <body>
 	<div class="upper_header" style="text-align: right; padding-right: 200px;">
 		<?php echo 'Hello '.$user."!  |  "; ?>
-		<a class="logout" href = "logout.php">Logout</a>
-	</div>
+		<a class="logout" href = "../files_user/logout.php">Logout</a>
+	</div> 
 	<div class="lower_header">
 		<div class="logo">
 			<img src="images/logo.png" alt="logo" class="logo2"/>
@@ -79,7 +60,7 @@ function stack_table($value,$value_name)
 		<div class="menu">
 			<div class="option">HOME</div>
 			<div class="option">NEWS</div>
-			<div class="option">HISTORY</div>
+			<a href="../files_currency/history.php" style="color: black;"><div class="option">HISTORY</div></a>
 			<div class="option">CONTACT</div>
 			<div style="clear: both;"></div>
 		</div>
@@ -93,12 +74,7 @@ function stack_table($value,$value_name)
 			</div>
 				<table class="stack_table">
 					<?php 
-					stack_table($results['PLN'],'PLN');
-					for($i=0; $i<34; $i++)
-						{
-							$code = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Code;	
-							stack_table($results[''.$code],$code);	
-						}
+					$currency->stack_table();
 					?>
 				</table>
 		</div>
@@ -134,7 +110,7 @@ function stack_table($value,$value_name)
 								$arrow='';
 							}
 							
-							echo '<tr><form action="works.php" method="POST">';
+							echo '<tr><form action="../files_currency/works.php" method="POST">';
 							echo '<td class="rates_table_td_name">'.$name.'</td>';
 							echo '<td class="rates_table_td_rate" name="rate">'.$rate.'</td>';
 							echo '<td class="rates_table_td_arrow">'.$arrow.'</td>';

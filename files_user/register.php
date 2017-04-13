@@ -1,5 +1,5 @@
 <?php
-require_once 'files_database/dbconfig.php';
+require_once '../files_database/dbconfig.php';
 
 if(isset($_POST['submited']))
 {
@@ -63,7 +63,7 @@ if(isset($_POST['submited']))
 			<title>Register!</title>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="initial-scale=1.0">
-			<link rel="stylesheet" type="text/css" href="style.css">
+			<link rel="stylesheet" type="text/css" href="../files_front/style.css">
 			</head>
 	
 			<body>
