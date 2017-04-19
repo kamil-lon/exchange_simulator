@@ -7,20 +7,18 @@ $user = $_SESSION['logged'];
 //---------------------------------
 $lastDate = date("Y-m-d",strtotime("-1 days"));
 $url = 'http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml';
-if(!is_null($url))
+
+$lastCurrency = @simplexml_load_file($url);
+if(!$lastCurrency)
 {
-	$lastCurrency = simplexml_load_file($url);
-}
-else
-{
-	$lastDate = date("Y-m-d",strtotime("-2 days"));
-	if(file_exists('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml'))
-		$lastCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml');
-	else
-	{
-		$lastDate = date("Y-m-d",strtotime("-3 days"));
-		$lastCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml');
-	}
+ $i=2;
+ while(!$lastCurrency)
+ {
+  $lastDate = date("Y-m-d",strtotime("-$i days"));
+  $url = 'http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml';
+  $lastCurrency = @simplexml_load_file($url); 
+  $i++;
+ }
 }
 
 $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a?format=xml');

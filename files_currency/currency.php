@@ -89,8 +89,7 @@ class Currency
 		for($i=0; $i<34; $i++)
 			{
 				$code = (string)$actuallyCurrency->ExchangeRatesTable->Rates->Rate[$i]->Code;	
-				$this->
-         echo_stack_table($results[''.$code],$code);	
+				$this->echo_stack_table($results[''.$code],$code);	
 			}
  }
 	

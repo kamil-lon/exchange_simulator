@@ -25,7 +25,7 @@ $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tab
 			<img src="../files_front/images/logo.png" alt="logo" class="logo2"/>
 		</div>
 		<div class="menu">
-			<a href="../files_front/index.php" style="color: black;"><div class="option">HOME</div>
+     <a href="../files_front/index.php" style="color: black;"><div class="option">HOME</div></a>
 			<div class="option">NEWS</div>
 			<a href="history.php" style="color: black;"><div class="option">HISTORY</div></a>
 			<div class="option">CONTACT</div>
