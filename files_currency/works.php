@@ -12,8 +12,8 @@ if(isset($_POST['bought']))
 		$name = $_POST['code'];
 		$rate = (float)str_replace(",",".",$_POST['rate']);
 		
-		if(($count*$rate)>$results['PLN'] || $count==0)
-			$_SESSION['buy_error'] = '<br><span style="color: red; font-size: 20px;">Too low account balance!</span>';
+		if(($count*$rate)>$results['PLN'] || $count<=0)
+			$_SESSION['buy_error'] = '<br><span style="color: red; font-size: 20px;">Invalid value!</span>';
 		else
 		{
 			$currency->log($rate,$name,$count,"BUY");
@@ -28,8 +28,8 @@ if(isset($_POST['selled']))
 	$rate = (float)str_replace(",",".",$_SESSION['rate_'.$name]);
 	
 	if($name!='PLN'){
-		if($count>$results[''.$name] || $count==0)
-			$_SESSION['sell_error'] = '<br><span style="color: red; font-size: 20px;">Too low currency balance!</span>';
+		if($count>$results[''.$name] || $count<=0)
+			$_SESSION['sell_error'] = '<br><span style="color: red; font-size: 20px;">Invalid value!</span>';
 		else
 		{
 			$currency->log($rate,$name,$count,"SELL");

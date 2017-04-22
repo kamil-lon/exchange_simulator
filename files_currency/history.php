@@ -60,10 +60,16 @@ $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tab
      $stmt->execute();
      $count = $stmt->rowCount();
      
+     $stmtAll = $db_con->prepare("SELECT * FROM logs WHERE user_id = :userId");
+     $stmtAll->bindParam(":userId",$userId);
+     $stmtAll->execute();
+     $countAll = $stmtAll->rowCount();
+     
      echo '<div class="paginate">';
      if($offset>=10)
       echo '<a href="'.$_SERVER['PHP_SELF'].'?offset='.($offset-10).'"> <<< </a>'.'&nbsp&nbsp&nbsp&nbsp&nbsp';
-     echo '<a href="'.$_SERVER['PHP_SELF'].'?offset='.($offset+10).'"> >>> </a>';
+     if($offset+10<=$countAll)
+      echo '<a href="'.$_SERVER['PHP_SELF'].'?offset='.($offset+10).'"> >>> </a>';
      echo '</div>';
      
      echo '<table class="history_table">';

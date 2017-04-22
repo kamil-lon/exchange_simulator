@@ -23,7 +23,17 @@ class User
 			$stmt->bindParam(":user_email",$user_email);
 			$stmt->bindParam(":date",$date);
 			$stmt->execute();
-			
+     
+      $stmt = $this->db->prepare("SELECT user_id FROM users WHERE user_name = :user_name");
+      $stmt->bindParam(":user_name",$user_name);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      $user_id = $result['user_id'];
+     
+      $stmt = $this->db->prepare("INSERT INTO currency(user_id) VALUES(:user_id)");
+      $stmt->bindParam(":user_id",$user_id);
+      $stmt->execute();
+      
 			return $stmt;
 		}
 		catch(PDOException $e)

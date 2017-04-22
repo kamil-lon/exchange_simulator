@@ -2,6 +2,8 @@
 
 <?php
 include '../files_database/dbconfig.php';
+if(!isset($_SESSION['logged']))
+ header("Location: ../files_user/login.php");
 $user = $_SESSION['logged'];
 
 //---------------------------------
@@ -19,6 +21,9 @@ if(!$lastCurrency)
   $lastCurrency = @simplexml_load_file($url); 
   $i++;
  }
+  $lastDate = date("Y-m-d",strtotime("-$i-1 days"));
+  $url = 'http://api.nbp.pl/api/exchangerates/tables/a/'.$lastDate.'?format=xml';
+  $lastCurrency = simplexml_load_file($url);
 }
 
 $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a?format=xml');

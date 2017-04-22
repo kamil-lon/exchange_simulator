@@ -76,7 +76,7 @@ if(isset($_POST['submited']))
 		<div class="main">
 			<div class="welcome">WELCOME!</div>
 			<div class="welcome2">Exchange simulator is your place to fun and learn about this biznes</div>
-			<div class="register">JOIN US!</div>
+			<div class="register"><a href="register.php">JOIN US!</a></div>
 			<div class="about">
 				<div class="about_cell">
 					<div class="about_header">Lorem ipsum</div>
