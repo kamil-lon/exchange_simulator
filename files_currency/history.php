@@ -1,6 +1,7 @@
 <?php
 include ('../files_database/dbconfig.php');
 $user = $_SESSION['logged'];
+$user_id = $_SESSION['user_id'];
 $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tables/a?format=xml');
 ?>
 <!DOCTYPE HTML>
@@ -16,23 +17,7 @@ $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tab
 	 <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
  </head>
  <body>
-  <div class="upper_header" style="text-align: right; padding-right: 200px;">
-		<?php echo 'Hello '.$user."!  |  "; ?>
-		<a class="logout" href = "../files_user/logout.php">Logout</a>
-	</div> 
-	<div class="lower_header">
-		<div class="logo">
-			<img src="../files_front/images/logo.png" alt="logo" class="logo2"/>
-		</div>
-		<div class="menu">
-     <a href="../files_front/index.php" style="color: black;"><div class="option">HOME</div></a>
-			<div class="option">NEWS</div>
-			<a href="history.php" style="color: black;"><div class="option">HISTORY</div></a>
-			<div class="option">CONTACT</div>
-			<div style="clear: both;"></div>
-		</div>
-		<div style="clear: both;"></div>
-	</div>
+  <?php include '../files_front/header.php'; ?>
   <div class="index_main">
    <div class="waluty">
     <div class="headers_index">YOUR STACK
@@ -45,7 +30,7 @@ $actuallyCurrency = simplexml_load_file('http://api.nbp.pl/api/exchangerates/tab
          ?>
        </table>
    </div>
-   <div class="kursy" style="width: 900px;">
+   <div class="biggest" style="width: 900px;">
     <form method="get">
      <?php
      if(!isset($_GET['offset']))

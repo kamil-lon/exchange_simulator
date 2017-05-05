@@ -57,6 +57,16 @@ class User
 				{
 					$_SESSION['logged'] = $result['user_name'];
 					$_SESSION['user_id'] = $result['user_id'];
+          $_SESSION['xp'] = $result['xp'];
+          $user_id = $_SESSION['user_id'];
+          
+          if(!isset($_COOKIE['dailyXpGave'.$user_id]))
+          {
+            $stmt = $this->db->prepare("UPDATE users SET xp=xp+10 WHERE user_id=$user_id");
+			      $stmt->execute();
+            setcookie('dailyXpGave'.$user_id,true,time()+24*3600);
+          }   
+            
 					return true;
 				}
 				else

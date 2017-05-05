@@ -21,6 +21,9 @@ class Currency
 		
 		$stmt = $this->db->prepare("UPDATE currency SET PLN = PLN-$summ WHERE user_id=$user_id");
 		$stmt->execute();
+    
+    $stmt = $this->db->prepare("UPDATE users SET xp=xp+1 WHERE user_id=$user_id");
+    $stmt->execute();
 	}
 	
 	function sell($rate,$name,$count)
@@ -33,6 +36,9 @@ class Currency
 		
 		$stmt = $this->db->prepare("UPDATE currency set $name = $name-$count WHERE user_id=$user_id");
 		$stmt->execute();
+    
+    $stmt = $this->db->prepare("UPDATE users SET xp=xp+1 WHERE user_id=$user_id");
+    $stmt->execute();
 	}
 	
 	function log($rate,$name,$count,$type)
